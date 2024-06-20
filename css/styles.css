@@ -1,5 +1,5 @@
 body {
-	background-color: #161b22;
+	background-color: #0d1117;
 	font-family: monospace;
 }
 
@@ -24,7 +24,7 @@ body {
 	height: 400px;
 	border: 3px solid #484848;
 	background-color: #93aca1;
-	overflow: scroll;
+	overflow: auto;
 }
 
 #screen-data {
@@ -33,6 +33,10 @@ body {
 }
 
 /* Controls section */
+.ab-button:hover, .start-select:hover {
+	cursor: pointer;
+}
+
 #controls{
 	width: 410px;
 	height: 370px;
@@ -49,6 +53,7 @@ body {
 	height: 50px;
 	font-size: 15px;
 	justify-content: space-evenly;
+	cursor: default;
 }
 
 .controls-main, .controls-secondary {
@@ -97,6 +102,28 @@ body {
 	width: 60px;
 	height: 60px;
 	border: 3px solid #484848;
+	display: flex;
+	justify-content: center;
+	align-items: end;
+}
+
+.ab-text {
+	margin: 0 auto;
+	text-align: center;
+	font-size: larger;
+	padding-top: 7px;
+	font-weight: bold;
+}
+
+.ab-text:hover {
+	cursor: default;
+}
+
+.startSelect-text {
+	text-align: center;
+	padding-top: 7px;
+	font-weight: bold;
+	cursor: default;
 }
 
 .secondary-buttons {
