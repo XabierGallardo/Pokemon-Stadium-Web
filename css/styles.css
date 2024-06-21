@@ -29,7 +29,7 @@ body {
 
 #screen-data {
 	padding: 5px;
-	font-size: larger;
+	font-size: inherit;
 }
 
 /* Controls section */
@@ -78,6 +78,22 @@ body {
 	background-color: #484848;
 	border-radius: 10px;
 	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.dpad-button p {
+	color: #a84673;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 10px;
+	cursor: pointer;
+}
+
+#dpad-vertical p {
+	rotate: -90deg;
 }
 
 #dpad-vertical {
@@ -143,6 +159,6 @@ body {
 	height: 12px;
 }
 
-#select-button {
+#start-button {
 	align-self: end;
 }
