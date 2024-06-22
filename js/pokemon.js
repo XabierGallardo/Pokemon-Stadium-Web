@@ -2,6 +2,7 @@
 //  MAPPING CONTROLS        //
 
 let screenData = document.getElementById("screen-data");
+let screenImg = document.getElementById("screen-img");
 
 let u_button = document.getElementById("u-button");
 let d_button = document.getElementById("d-button");
@@ -12,9 +13,10 @@ let r_button = document.getElementById("r-button");
 let start_button = document.getElementById("start-button");
 start_button.addEventListener("click", function() {
     location.reload()
-})
+});
 
 let movesMap = [];
+
 
 
 
@@ -37,22 +39,24 @@ class Pokemon {
 
     startGame() {
         let introText = `
-            _____POKEMON BATTLE_____
-            <br>${pokemon1.name}<br>
-            Type: ${pokemon1.type}<br>
-            Attack: ${pokemon1.attack}<br>
-            Defense: ${pokemon1.defense}<br>
-            
-            <br>VS<br>
-
+        _____POKEMON BATTLE_____
             <br>${pokemon2.name}<br>
             Type: ${pokemon2.type}<br>
             Attack: ${pokemon2.attack}<br>
             Defense: ${pokemon2.defense}<br>
+
+            <br>VS<br>
+
+            <br>${pokemon1.name}<br>
+            Type: ${pokemon1.type}<br>
+            Attack: ${pokemon1.attack}<br>
+            Defense: ${pokemon1.defense}<br>
             ________________________<br>
         `;
 
         printText(introText);
+        printImg(pokemon2.name.toLowerCase(), 2);
+        printImg(pokemon1.name.toLowerCase(), 1);
     }
 
 
@@ -71,6 +75,7 @@ class Pokemon {
                 d. ${pokemon1.moves[3]}<br>
             `;
             printText(continueFight);
+            
             
             if(movesMap.length > 0) {
 
@@ -116,14 +121,13 @@ class Pokemon {
 
                 // Health check
                 if(pokemon1.bars <= 0 || pokemon2.bars <= 0) {
-                    printText("<br>GAME OVER<br>");
 
                     if(pokemon1.bars > 0) {
                         let victory1 = `
                             ________________________<br>
                             <br>VICTORY<br>
-                            <br>Your ${pokemon1.name} won!
-                            <em>PRESS START BUTTON TO CREATE ANOTHER BATTLE</em>
+                            <br>${pokemon1.name} won!<br>
+                            <em>PRESS START BUTTON TO RESET</em>
                         `;
 
                         printText(victory1);
@@ -132,9 +136,9 @@ class Pokemon {
 
                         let victory2 = `
                             ________________________<br>
-                            <br>VICTORY<br>
-                            <br>Oponent's ${pokemon2.name} won!<br>
-                            <em>PRESS START BUTTON TO CREATE ANOTHER BATTLE</em>
+                            <br>GAME OVER<br>
+                            <br>${pokemon2.name} won!<br>
+                            <em>PRESS START BUTTON TO RESET</em>
                         `;
 
                         printText(victory2);
@@ -167,7 +171,7 @@ class Pokemon {
 //////////////////////////////////
 //  CREATING POKEMON OBJECTS    //
 
-const bulbasaur = new Pokemon("Bulbasaur", "Plant", ["Vine Wip","Leech Seed","Tackle","Body Slam"], {"attack" : 5, "defense": 5});
+const bulbasaur = new Pokemon("Bulbasaur", "Plant", ["Vine Wip","Leech Seed","Tackle","Body Slam"], {"attack" : 5, "defense": 5}, "");
 const squirtle = new Pokemon("Squirtle", "Water", ["Bubble","Water Gun","Bite","Tackle"], {"attack" : 4, "defense": 6});
 const charmander = new Pokemon("Charmander", "Fire", ["Ember","Fire Fang","Tackle","Scratch"], {"attack" : 6, "defense": 4});
 
@@ -224,4 +228,23 @@ function printText(text){
 
     // When adding text, navigate to bottom
     screenData.scrollIntoView(false);
+}
+
+
+
+
+function printImg(name, num) {
+    if (num === 2) {
+        screenImg.innerHTML += `
+            <a href="https://pokemondb.net/pokedex/${name}" target="_blank">
+                <img id="pokemon2" class="sprite" src="https://img.pokemondb.net/sprites/yellow/normal/${name}-color.png" alt="${name}">
+            </a>
+        `;
+    } else {
+        screenImg.innerHTML += `<a href="https://pokemondb.net/pokedex/${name}" target="_blank">
+            <img id="pokemon1" class="sprite" src="https://img.pokemondb.net/sprites/yellow/back-normal/${name}-color.png" alt="${name}">
+        </a>`;
+    }
+    
+
 }
