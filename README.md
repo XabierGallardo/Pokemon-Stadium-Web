@@ -2,6 +2,7 @@
 Pokemon Stadium on the web browser! 
 
 <p>
-    <img src="assets/sample.png" alt="Gameboy preview sample">
-    <img src="assets/sample2.png" alt="Gameboy preview sample">
+    <img src="assets/sample.png" alt="Gameboy preview sample 1">
+    <img src="assets/sample2.png" alt="Gameboy preview sample 2">
+    <img src="assets/sample3.png" alt="Gameboy preview sample 3">
 </p>

@@ -5,11 +5,10 @@ body {
 
 .shell {
 	border: 3px solid #484848;
-	/* TO DO Color Selector */
 	background: #00727a;
-	background: #e8e5df;
-	background: #ff4132;
+    background: #ff4132;
 	background: #f9b722;
+    background: #e8e5df;
 	border-radius: 20px;
 }
 
@@ -38,7 +37,7 @@ body {
 #screen-data {
 	padding: 5px;
 	font-size: inherit;
-	width: 185px;
+	width: 190px;
 	background-color: #93aca1;
 	background-color: #ffffff;
 	min-height: 410px;
@@ -80,6 +79,7 @@ body {
 }
 
 .controls-logo {
+	color: #313943;
 	color: #6052a4;
 	display: flex;
 	align-items: center;
@@ -119,9 +119,9 @@ body {
 }
 
 .dpad-button p {
-	color: #a84673;
-	color: #313943;
 	color: #6052a4;
+	color: #313943;
+	color: #a84673;
 	font-size: 20px;
 	font-weight: bold;
 	padding: 10px;
@@ -149,8 +149,8 @@ body {
 }
 
 .ab-button {
-	background-color: #a84673;
 	background-color: #313943;
+	background-color: #a84673;
 	border-radius: 50%;
 	width: 60px;
 	height: 60px;
@@ -190,8 +190,8 @@ body {
 
 .start-select {
 	border: 3px solid #484848;
-	background-color: #9e9596;
 	background-color: #313943;
+	background-color: #9e9596;
 	border-radius: 15px;
 	width: 60px;
 	height: 12px;
