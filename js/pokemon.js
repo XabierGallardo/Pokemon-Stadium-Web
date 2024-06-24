@@ -23,8 +23,8 @@ let movesMap = [];
 
 
 
-//////////////////////////////
-//  STARTING THE GAME       //
+///////////////////////////////
+//  DEFINING CLASS POKEMON  //
 
 class Pokemon {
 
@@ -39,7 +39,11 @@ class Pokemon {
     }
 
 
+
+    //////////////////////////////////
+    //  INTRO & TYPE ADVANTAGES     //
     startGame() {
+
         let introText = `
             _____POKEMON BATTLE_____
                 <br>${pokemon2.name}<br>
@@ -58,32 +62,35 @@ class Pokemon {
         printText(introText);
         printImg(pokemon2.name.toLowerCase(), 2);
         printImg(pokemon1.name.toLowerCase(), 1);
-    }
 
-
-    continueBattle() {
-
-        // Defining types advantages
-
+    
         // Our pokemon has super effective attacks! attack + 7
         if(pokemon1.type === "Grass" && pokemon2.type === "Water" || pokemon1.type === "Fire" && pokemon2.type === "Grass" || pokemon1.type === "Water" && pokemon2.type === "Fire") {
             pokemon1.attack += 7;
             pokemon1.defense += 7;
-            console.log(pokemon1.type + " is superior than " + pokemon2.type);
 
+            console.log(pokemon1.type + " is superior than " + pokemon2.type);
+    
         // Same type, nothing changes!
         } else if(pokemon1.type === pokemon2.type) {
             console.log("Both are same type " + pokemon2.type);
-
+    
         // Oponent's pokemon has super effective attacks! attack + 7
-        } else {
+        } else if(pokemon2.type === "Grass" && pokemon1.type === "Water" || pokemon2.type === "Fire" && pokemon1.type === "Grass" || pokemon2.type === "Water" && pokemon1.type === "Fire") {
             pokemon2.attack += 7;
             pokemon2.defense += 7;
+
             console.log(pokemon1.type + " is inferior than " + pokemon2.type);
         }
+    }
 
+    
 
-        setTimeout(function() {
+    //////////////////////////
+    //  BATTLE LOGIC        //
+    continueBattle() {
+
+        setTimeout(function() { // Delaying 1 second first battle text
 
             let continueFight = `
                 <br>${pokemon1.name} Health: ${pokemon1.bars}<br>
@@ -93,10 +100,9 @@ class Pokemon {
                 u. ${pokemon1.moves[0]}<br>
                 l. ${pokemon1.moves[1]}<br>
                 r. ${pokemon1.moves[2]}<br>
-                d. ${pokemon1.moves[3]}<br>
-            `;
+                d. ${pokemon1.moves[3]}<br>`;
+
             printText(continueFight);
-            
             
             if(movesMap.length > 0) {
 
@@ -104,10 +110,10 @@ class Pokemon {
                 let textAttack2 = '';
                 let selectedAttack = '';
 
+
                 // Pick last move selected on the array
                 let lastMove = movesMap[movesMap.length - 1];
                 
-                console.log(lastMove);
                 switch(lastMove) {
                     case "u":
                         selectedAttack = `${pokemon1.moves[0]}`;
@@ -126,114 +132,132 @@ class Pokemon {
                         break;
                 }
 
+
                 // Randomize which pokemon attacks first, from 1 to 10: pokemon1 is even, pokemon 2 is odd
                 let attackOrder = Math.floor(Math.random() * 10) + 1;
 
-                if (attackOrder % 2 === 0) {
+                if (attackOrder % 2 === 0) { // POKEMON 1 ATTACKS FIRST
                     
-                    // Pokemon 1 attacks
-                    let attackPower1 = pokemon1.attack + (Math.floor(Math.random() * 5 ) +1 );
+                    let attackPower1 = pokemon1.attack + (Math.floor(Math.random() * 5 ) + 1);
                     textAttack1 = `<br>${pokemon1.name} used ${selectedAttack}!<br>`;
+
+                    console.log(`${pokemon1.name} used ${selectedAttack}! Attack: ${attackPower1}`);
                     printText(textAttack1);
     
                     pokemon2.bars = pokemon2.bars - attackPower1;
 
+                    if(pokemon2.bars < 1 ) {
+                        printVictory();
 
-                    if(pokemon2.bars >= 1) { // If pokemon 2 still has energy
+                    } else {
 
-                        // Pokemon 2 attacks
+                        // Pokemon 2 counter attacks
                         let randomAttack2 = Math.floor(Math.random() * 4); 
-                        let attackPower2 = pokemon1.attack + (Math.floor(Math.random() * 5 ) +1 );
+                        let attackPower2 = pokemon1.attack + (Math.floor(Math.random() * 5 ) + 1 );
                         textAttack2 = `<br>${pokemon2.name} used ${pokemon2.moves[randomAttack2]}!<br>`;
+
+                        console.log(`${pokemon2.name} used ${pokemon2.moves[randomAttack2]}! Attack: ${attackPower2}`);
                         printText(textAttack2);
                         
                         pokemon1.bars = pokemon1.bars - attackPower2;
-    
-                        // GAME CONTINUES
-                        let continueFight2 = `
-                        ________________________<br>
-                        <br>${pokemon1.name} Health: ${pokemon1.bars}<br>
-                        <br>${pokemon2.name} Health: ${pokemon2.bars}<br>
-                        ________________________<br>
-            
-                        <br>Go! ${pokemon1.name}!<br>
-                        u. ${pokemon1.moves[0]}<br>
-                        l. ${pokemon1.moves[1]}<br>
-                        r. ${pokemon1.moves[2]}<br>
-                        d. ${pokemon1.moves[3]}<br>`;
 
-                        printText(continueFight2);
+                        if(pokemon1.bars > 0) {
+                            printContinue();
+                        } else {
+                            printGameOver();
+                        }
 
-                    
-                    } else { // If pokemon 2 faints
-
-                        let victory = `
-                            ________________________<br>
-                            <br>VICTORY<br>
-                            <br>${pokemon1.name} won!<br>
-                            <br>${pokemon2.name} fainted!<br>
-                            <br><em>PRESS START BUTTON TO RESET</em><br>`;
-                        
-                        console.log(pokemon1.name + " won!\n" + "Health " + pokemon1.bars);
-                        console.log(pokemon2.name + " fainted!\n" + "Health " + pokemon2.bars);
-                        removeText();
-                        setTimeout(printText(victory), 1000);
                     }
 
-                } else {
 
-                    // Pokemon 2 attacks
+                } else { // POKEMON 2 ATTACKS FIRST
+
                     let randomAttack2 = Math.floor(Math.random() * 4); 
-                    let attackPower2 = pokemon1.attack + (Math.floor(Math.random() * 5 ) +1 );
+                    let attackPower2 = pokemon1.attack + (Math.floor(Math.random() * 5 ) + 1 );
                     textAttack2 = `<br>${pokemon2.name} used ${pokemon2.moves[randomAttack2]}!<br>`;
+
+                    console.log(`${pokemon2.name} used ${pokemon2.moves[randomAttack2]}! Attack: ${attackPower2}`);
                     printText(textAttack2);
                     
                     pokemon1.bars = pokemon1.bars - attackPower2;
 
-                    console.log("Oponent attacked");
+                    if(pokemon1.bars < 1) {
+                        printGameOver();
 
-                    
-                    if(pokemon1.bars >= 1) { // If pokemon 1 still has energy
-                        // Pokemon 1 attacks
-                        let attackPower1 = pokemon1.attack + (Math.floor(Math.random() * 5 ) +1 );
+                    } else {
+
+                        // Pokemon 1 counter attacks
+                        let attackPower1 = pokemon1.attack + (Math.floor(Math.random() * 5 ) + 1);
                         textAttack1 = `<br>${pokemon1.name} used ${selectedAttack}!<br>`;
+
+                        console.log(`${pokemon1.name} used ${selectedAttack}! Attack: ${attackPower1}`);
                         printText(textAttack1);
         
                         pokemon2.bars = pokemon2.bars - attackPower1;
     
-                        console.log("game continues!")
-                        // GAME CONTINUES
-                        let continueFight2 = `
-                        ________________________<br>
-                        <br>${pokemon1.name} Health: ${pokemon1.bars}<br>
-                        <br>${pokemon2.name} Health: ${pokemon2.bars}<br>
-                        ________________________<br>
-            
-                        <br>Go! ${pokemon1.name}!<br>
-                        u. ${pokemon1.moves[0]}<br>
-                        l. ${pokemon1.moves[1]}<br>
-                        r. ${pokemon1.moves[2]}<br>
-                        d. ${pokemon1.moves[3]}<br>`;
+                        if(pokemon2.bars > 0) {
+                            printContinue();
+                        } else {
+                            printVictory();
+                        }
+                    }
+                }
 
-                        printText(continueFight2);
 
-                    } else { // If pokemon 1 faints
-                        let gameover = `
+
+
+                //////////////////////////////////
+                //  PRINTING BATTLE TEXTS       //
+                function printVictory() {
+                    let victoryText = `
+                        ________________________<br>
+                        <br>VICTORY<br>
+                        <br>${pokemon1.name} won! Health: ${pokemon1.bars}<br>
+                            <br>${pokemon2.name} fainted! Health: ${pokemon2.bars}<br>
+                        <br><em>PRESS START BUTTON TO RESET</em><br>`;
+                    
+                    console.log(pokemon1.name + " won!\n" + "Health " + pokemon1.bars);
+                    console.log(pokemon2.name + " fainted!\n" + "Health " + pokemon2.bars);
+                    
+                    setTimeout(printText(victoryText), 1000);
+                }
+
+
+                function printGameOver() {
+                    let gameoverText = `
                             ________________________<br>
                             <br>GAME OVER<br>
-                            <br>${pokemon2.name} won!<br>
-                            <br>${pokemon1.name} fainted!<br>
+                            <br>${pokemon2.name} won! Health: ${pokemon2.bars}<br>
+                            <br>${pokemon1.name} fainted! Health: ${pokemon1.bars}<br>
                             <br><em>PRESS START BUTTON TO RESET</em><br>`;
         
                         console.log(pokemon2.name + " won!\n" + "Health " + pokemon2.bars);
                         console.log(pokemon1.name + " fainted!\n" + "Health " + pokemon1.bars);
 
-                        removeText();
-                        setTimeout(printText(gameover), 1000);
-                    }
+                        setTimeout(printText(gameoverText), 1000);
                 }
 
+
+                function printContinue() {
+                    let continueFight2 = `
+                        ________________________<br>
+                        <br>${pokemon1.name} Health: ${pokemon1.bars}<br>
+                        <br>${pokemon2.name} Health: ${pokemon2.bars}<br>
+                        ________________________<br>
+            
+                        <br>Go! ${pokemon1.name}!<br>
+                        u. ${pokemon1.moves[0]}<br>
+                        l. ${pokemon1.moves[1]}<br>
+                        r. ${pokemon1.moves[2]}<br>
+                        d. ${pokemon1.moves[3]}<br>`;
+
+                    printText(continueFight2);
+                }
+
+
             }
+
+
         }, 1000)
     }
 }
@@ -293,7 +317,6 @@ r_button.addEventListener("click", function() {
 });
 
 
-
 function printText(text){
     let parser = new DOMParser();
     let html = parser.parseFromString(text, 'text/html');
@@ -305,23 +328,23 @@ function printText(text){
 }
 
 
-
 function printImg(name, num) {
+
     // Pokemon 2
     if (num === 2) {
         screenImg.innerHTML += `
-            <a href="https://pokemondb.net/pokedex/${name}" target="_blank">
-                <img id="pokemon2" class="sprite" src="https://img.pokemondb.net/sprites/yellow/normal/${name}-color.png" alt="${name}">
+            <a href="https://pokemondb.net/pokedex/${name}" target="_blank" id="pokemon2">
+                <img class="sprite" src="https://img.pokemondb.net/sprites/yellow/normal/${name}-color.png" alt="${name}">
             </a>`;
 
     // Pokemon 1
     } else {
-        screenImg.innerHTML += `<a href="https://pokemondb.net/pokedex/${name}" target="_blank">
-            <img id="pokemon1" class="sprite" src="https://img.pokemondb.net/sprites/yellow/back-normal/${name}-color.png" alt="${name}">
+        screenImg.innerHTML += `
+        <a href="https://pokemondb.net/pokedex/${name}" target="_blank" id="pokemon1">
+            <img class="sprite" src="https://img.pokemondb.net/sprites/yellow/back-normal/${name}-color.png" alt="${name}">
         </a>`;
     }
 }
-
 
 
 function removeText() {
@@ -331,6 +354,8 @@ function removeText() {
 
 
 
+////////////////////////////////
+//  GAMEBOY COLOR SELECTOR    //
 /* TO DO Color Selector on SELECT button
 .shell
     background: #00727a;    green
