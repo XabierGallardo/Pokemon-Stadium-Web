@@ -1,0 +1,128 @@
+{
+	"bulbasaur": {
+		"name": "Bulbasaur",
+		"type": "Grass",
+		"moves": [
+			"Vine Wip",
+			"Leech Seed",
+			"Tackle",
+			"Body Slam"
+		],
+		"stats": {
+			"attack": 5,
+			"defense": 5
+		}
+	},
+	"squirtle": {
+		"name": "Squirtle",
+		"type": "Water",
+		"moves": [
+			"Bubble",
+			"Water Gun",
+			"Bite",
+			"Tackle"
+		],
+		"stats": {
+			"attack": 4,
+			"defense": 6
+		}
+	},
+	"charmander": {
+		"name": "Charmander",
+		"type": "Fire",
+		"moves": [
+			"Ember",
+			"Fire Fang",
+			"Tackle",
+			"Scratch"
+		],
+		"stats": {
+			"attack": 6,
+			"defense": 4
+		}
+	},
+	"ivysaur": {
+		"name": "Ivysaur",
+		"type": "Grass",
+		"moves": [
+			"Vine Wip",
+			"Cut",
+			"Razor Leaf",
+			"Poison Powder"
+		],
+		"stats": {
+			"attack": 7,
+			"defense": 7
+		}
+	},
+	"wartortle": {
+		"name": "Wartortle",
+		"type": "Water",
+		"moves": [
+			"Water Gun",
+			"Mega Punch",
+			"Bubblebeam",
+			"Skull Bash"
+		],
+		"stats": {
+			"attack": 5,
+			"defense": 9
+		}
+	},
+	"charmeleon": {
+		"name": "Charmeleon",
+		"type": "Fire",
+		"moves": [
+			"Flamethrower",
+			"Dig",
+			"Fire Blast",
+			"Slash"
+		],
+		"stats": {
+			"attack": 9,
+			"defense": 5
+		}
+	},
+	"venusaur": {
+		"name": "Venusaur",
+		"type": "Grass",
+		"moves": [
+			"Solar Beam",
+			"Earthquake",
+			"Razor Leaf",
+			"Hyper Beam"
+		],
+		"stats": {
+			"attack": 10,
+			"defense": 10
+		}
+	},
+	"blastoise": {
+		"name": "Blastoise",
+		"type": "Water",
+		"moves": [
+			"Hydro Pump",
+			"Earthquake",
+			"Ice Beam",
+			"Surf"
+		],
+		"stats": {
+			"attack": 8,
+			"defense": 12
+		}
+	},
+	"charizard": {
+		"name": "Charizard",
+		"type": "Fire",
+		"moves": [
+			"Flamethrower",
+			"Fly",
+			"Fire Blast",
+			"Hyper Beam"
+		],
+		"stats": {
+			"attack": 12,
+			"defense": 8
+		}
+	}
+}

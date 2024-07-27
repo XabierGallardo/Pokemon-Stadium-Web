@@ -1,17 +1,46 @@
+/*	GLOBAL	*/
 body {
 	background-color: #0d1117;
 	font-family: monospace;
 }
 
+
+
+/*	THEME	*/
+/* Added multiple lines to preview colors on the editor	*/
 .shell {
 	border: 3px solid #484848;
-	background: #00727a;
-    background: #ff4132;
 	background: #f9b722;
+    background: #ff4132;
     background: #e8e5df;
 	border-radius: 20px;
 }
 
+.controls-logo {
+	color: #313943;
+	color: #6052a4;
+}
+
+.ab-button {
+	background-color: #313943;
+	background-color: #a84673;
+}
+
+.dpad-button p {
+	color: #6052a4;
+	color: #313943;
+	color: #a84673;
+}
+
+.start-select {
+	border: 3px solid #484848;
+	background-color: #313943;
+	background-color: #9e9596;
+}
+
+
+
+/*	GENERAL	*/
 #gameboy {
 	width: 510px;
 	height: 910px;
@@ -26,10 +55,6 @@ body {
 	width: 430px;
 	height: 430px;
 	border: 3px solid #484848;
-	/* Apply Filter
-	#95bb43
-	#93aca1
-	*/
 	background-color: #ffffff;
 	overflow: auto;
 	display: flex;
@@ -74,6 +99,8 @@ body {
 	padding-right: 5px;
 }
 
+
+
 /* Controls section */
 .ab-button:hover, .start-select:hover {
 	cursor: pointer;
@@ -88,8 +115,6 @@ body {
 }
 
 .controls-logo {
-	color: #313943;
-	color: #6052a4;
 	display: flex;
 	align-items: center;
 	width: 65%;
@@ -128,9 +153,6 @@ body {
 }
 
 .dpad-button p {
-	color: #6052a4;
-	color: #313943;
-	color: #a84673;
 	font-size: 20px;
 	font-weight: bold;
 	padding: 10px;
@@ -158,8 +180,6 @@ body {
 }
 
 .ab-button {
-	background-color: #313943;
-	background-color: #a84673;
 	border-radius: 50%;
 	width: 60px;
 	height: 60px;
@@ -198,9 +218,6 @@ body {
 }
 
 .start-select {
-	border: 3px solid #484848;
-	background-color: #313943;
-	background-color: #9e9596;
 	border-radius: 15px;
 	width: 60px;
 	height: 12px;

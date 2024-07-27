@@ -1,9 +1,10 @@
 # Pokemon Stadium Web :computer: :penguin: :fire: :dragon:
 ### Pokemon Stadium on the web browser!
 
-Select your move using direction buttons!
+- Select your move using direction buttons!
+- Press `START` button to start a new battle
+- Press `SELECT` to change theme
 
-Press `START` button to create a new battle
 
 <p>
     <img src="assets/sample.png" alt="Gameboy preview sample 1">
