@@ -285,24 +285,13 @@ fetch('http://localhost:8080/Pokemon-Stadium-Web/js/pokemons.json')
     }
     
     // Random Pokeballs & Pokemon selection
-    let pokemon1;
-    let pokemon2;
+    let pokemon1 = fetchedPokemons[Math.floor(Math.random() * 9)];
+    let pokemon2 = fetchedPokemons[Math.floor(Math.random() * 9)];
+    
+    pokemon1.startGame(pokemon2);
+    pokemon1.continueBattle(pokemon2);
 
-    function selectPokemons() {
-        screenData.innerHTML = '';
-        screenImg.innerHTML = '';
 
-        pokemon1 = fetchedPokemons[Math.floor(Math.random() * 9)];
-        pokemon2 = fetchedPokemons[Math.floor(Math.random() * 9)];
-    
-        pokemon1.startGame(pokemon2);
-        pokemon1.continueBattle(pokemon2);
-    
-    }
-    
-    selectPokemons();
-    
-    
 
 
     //////////////////////////////
@@ -364,7 +353,9 @@ fetch('http://localhost:8080/Pokemon-Stadium-Web/js/pokemons.json')
     ////////////////////
     //  RESET GAME    //
 
-    start_button.addEventListener("click", selectPokemons);
+    start_button.addEventListener("click", function(){
+            location.reload()
+    });
 
     
 
