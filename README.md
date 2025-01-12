@@ -3,11 +3,11 @@
 
 - Select your move using direction buttons!
 - Press `START` button to start a new battle
-- Press `SELECT` to change theme
+- Press `SELECT` to change the gameboy's color palette
 
 
 <p>
-    <img src="assets/sample.png" alt="Gameboy preview sample 1">
-    <img src="assets/sample2.png" alt="Gameboy preview sample 2">
-    <img src="assets/sample3.png" alt="Gameboy preview sample 3">
+    <img src="public/img/sample.png" alt="Gameboy preview sample 1">
+    <img src="public/img/sample2.png" alt="Gameboy preview sample 2">
+    <img src="public/img/sample3.png" alt="Gameboy preview sample 3">
 </p>

@@ -6,6 +6,7 @@ body {
 
 
 
+
 /*	THEME	*/
 /* Added multiple lines to preview colors on the editor	*/
 .shell {
@@ -40,6 +41,7 @@ body {
 
 
 
+
 /*	GENERAL	*/
 #gameboy {
 	width: 510px;
@@ -69,7 +71,7 @@ body {
 
 #screen-data {
 	padding: 5px;
-	font-size: inherit;
+	font-size: 10px;
 	width: 205px;
 	background-color: #93aca1;
 	background-color: #ffffff;
@@ -101,7 +103,8 @@ body {
 
 
 
-/* Controls section */
+
+/* CONTROLS */
 .ab-button:hover, .start-select:hover {
 	cursor: pointer;
 }
