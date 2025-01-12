@@ -505,6 +505,10 @@ fetch('http://localhost:8080/Pokemon-Stadium-Web/public/pokemons.json')
                     counter = 2;
                     break;
             }
+
+        // In case there's no item in localStorage, the default counter is 0, equivalent to whiteGB theme
+        } else {
+            counter = 0;
         }
 
 
