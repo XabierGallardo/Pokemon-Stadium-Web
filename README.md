@@ -7,7 +7,7 @@
 
 
 <p>
-    <img src="public/img/sample.png" alt="Gameboy preview sample 1">
+    <img src="public/img/sample1.png" alt="Gameboy preview sample 1">
     <img src="public/img/sample2.png" alt="Gameboy preview sample 2">
     <img src="public/img/sample3.png" alt="Gameboy preview sample 3">
 </p>
